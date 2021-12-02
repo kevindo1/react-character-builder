@@ -8,59 +8,53 @@ export default function Editor({
   setMiddle,
   bottom,
   setBottom,
-  catchphrase,
-  setCatchphrase,
-  headCount,
+  phrase,
   setHeadCount,
-  middleCount,
   setMiddleCount,
-  bottomCount,
   setBottomCount,
-  catchphraseCount,
-  setCatchphraseCount,
+  setPhraseList,
+  setPhrase,
 }) {
+  const handleHead = (e) => {
+    setHead(e.target.value);
+    setHeadCount((prevState) => prevState + 1);
+  };
+  const handleMiddle = (e) => {
+    setMiddle(e.target.value);
+    setMiddleCount((prevState) => prevState + 1);
+  };
+  const handleBottom = (e) => {
+    setBottom(e.target.value);
+    setBottomCount((prevState) => prevState + 1);
+  };
+  const handleClick = () => {
+    setPhraseList((prevState) => [...prevState, phrase]);
+    setPhrase('');
+  };
+
   return (
     <div className="editor">
-      <div className="head" value={head} onChange={(e) => setHead(e.target.value)}>
-        <label>Head</label>
-        <select>
-          <option value="bird-head">{'Bird'}</option>
-          <option value="duck-head">Duck</option>
-          <option value="dog-head">Dog</option>
-          <option value="horse-head">Horse</option>
-        </select>
-      </div>
-      <div className="middle" value={middle} onChange={(e) => setMiddle(e.target.value)}>
-        <label>Middle</label>
-        <select>
-          <option value="blue-middle">{'Blue'}</option>
-          <option value="dress-middle">Fancy</option>
-          <option value="pink-middle">Pink</option>
-          <option value="red-middle">Red</option>
-        </select>
-      </div>
-      <div className="bottom" value={bottom} onChange={(e) => setBottom(e.target.value)}>
-        <label>Bottom</label>
-        <select>
-          <option value="leg-pants">{'Single Leg'}</option>
-          <option value="white-pants">White Pants</option>
-          <option value="blue-pants">Blue Jeans</option>
-        </select>
-      </div>
-      <div
-        className="catchphrase"
-        value={catchphrase}
-        onInput={(e) => setCatchphrase(e.target.value)}
-      >
-        <label>Add a catchphrase</label>
-        <textarea style={{ height: '10px' }} />
-        <button className="btn">Add</button>
-      </div>
-      <div className="parts">
-        <img src={`${process.env.PUBLIC_URL}/images/${head}.png`} />
-        <img src={`${process.env.PUBLIC_URL}/images/${middle}.png`} />
-        <img src={`${process.env.PUBLIC_URL}/images/${bottom}.png`} />
-      </div>
+      <select className="head" value={head} onChange={handleHead}>
+        <option value="bird-head">{'Bird'}</option>
+        <option value="duck-head">Duck</option>
+        <option value="dog-head">Dog</option>
+        <option value="horse-head">Horse</option>
+      </select>
+      <select className="middle" value={middle} onChange={handleMiddle}>
+        <option value="blue-middle">{'Blue'}</option>
+        <option value="dress-middle">Fancy</option>
+        <option value="pink-middle">Pink</option>
+        <option value="red-middle">Red</option>
+      </select>
+      <select className="bottom" value={bottom} onChange={handleBottom}>
+        <option value="leg-pants">{'Single Leg'}</option>
+        <option value="white-pants">White Pants</option>
+        <option value="blue-pants">Blue Jeans</option>
+      </select>
+      <input type="text" value={phrase} onChange={(e) => setPhrase(e.target.value)} />
+      <button className="btn" onClick={handleClick}>
+        Add Catchphrase
+      </button>
     </div>
   );
 }

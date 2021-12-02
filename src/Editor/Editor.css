@@ -6,6 +6,8 @@ img {
   width: 200px;
 }
 
-body {
+p,
+label {
   color: white;
+  background-color: black;
 }
