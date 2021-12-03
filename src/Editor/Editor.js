@@ -34,19 +34,19 @@ export default function Editor({
 
   return (
     <div className="editor">
-      <select className="head" value={head} onChange={handleHead}>
+      <select value={head} onChange={handleHead}>
         <option value="bird-head">{'Bird'}</option>
         <option value="duck-head">Duck</option>
         <option value="dog-head">Dog</option>
         <option value="horse-head">Horse</option>
       </select>
-      <select className="middle" value={middle} onChange={handleMiddle}>
+      <select value={middle} onChange={handleMiddle}>
         <option value="blue-middle">{'Blue'}</option>
         <option value="dress-middle">Fancy</option>
         <option value="pink-middle">Pink</option>
         <option value="red-middle">Red</option>
       </select>
-      <select className="bottom" value={bottom} onChange={handleBottom}>
+      <select value={bottom} onChange={handleBottom}>
         <option value="leg-pants">{'Single Leg'}</option>
         <option value="white-pants">White Pants</option>
         <option value="blue-pants">Blue Jeans</option>
